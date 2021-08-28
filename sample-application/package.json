@@ -1,0 +1,50 @@
+{
+  "name": "aws-dynamodb-kinesisfirehose-s3-ingestion-sample-application",
+  "version": "1.0.0",
+  "description": "CDK application for sending Amazon DynamoDB Streams to an S3 bucket using Amazon Kinesis Data Streams and Data Firehose.",
+  "private": true,
+  "bin": {
+    "aws-dynamodb-kinesisfirehose-s3-ingestion": "bin/aws-dynamodb-kinesisfirehose-s3-ingestion.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "eslint": "eslint \"lib/**\" --fix"
+  },
+  "author": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com",
+    "organization": true
+  },
+  "license": "MIT-0",
+  "devDependencies": {
+    "@aws-cdk/assert": "1.110.1",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "aws-cdk": "1.110.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.3.2",
+    "ts-jest": "^26.5.6",
+    "ts-node": "10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "1.110.1",
+    "@aws-cdk/aws-dynamodb": "1.110.1",
+    "@aws-cdk/core": "1.110.1",
+    "@aws-solutions-constructs/aws-apigateway-dynamodb": "1.110.1",
+    "@aws-solutions-constructs/core": "1.110.1",
+    "aws-dynamodb-kinesisstreams-s3": "1.0.1",
+    "source-map-support": "^0.5.16"
+  }
+}
