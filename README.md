@@ -1,4 +1,4 @@
-# DynamoDB ingestion into S3 with Kinesis Data Streams and Firehose	
+# DynamoDB ingestion into S3 with Kinesis Data Streams and Kinesis Data Firehose	
 <!--BEGIN STABILITY BANNER-->
 ---
 
@@ -16,14 +16,11 @@
 |:-------------|-----------------|
 |![Typescript Logo](https://docs.aws.amazon.com/cdk/api/latest/img/typescript32.png) Typescript|[aws-dynamodb-kinesisstreams-s3](https://www.npmjs.com/package/aws-dynamodb-kinesisstreams-s3)|
 
-This an example of a CDK application for sending Amazon DynamoDB Streams to an S3 bucket using Amazon Kinesis Data Streams and Data Firehose.
+This a sample AWS CDK application that delivers Amazon DynamoDB records to an S3 bucket using Amazon Kinesis Data Streams and Kinesis Data Firehose.
 
 ## Build
+To install and build the latest code in `pattern/aws-dynamodb-kinesisstreams-s3` and `sample-application` folders:
 
-####Install dependencies	
-To run this project, you will install dependencies mentioned in the package.json files under `pattern/aws-dynamodb-kinesisstreams-s3` and `sample-application` folders.
-
-- Run:
 ```bash
 npm install -g aws-cdk
 
@@ -36,7 +33,7 @@ npm install
 npm run build
 ```
 
-This will install the necessary CDK, then this example's dependencies, and then build your TypeScript files and your CloudFormation template.
+This will install the AWS CDK client, install/build the AWS CDK L3 construct `aws-dynamodb-kinesisstreams-s3` and finally install/build the sample application under `sample-application`.
 
 ## Synthesize Cloudformation Template
 
@@ -51,11 +48,14 @@ cd sample-application
 cdk deploy
 ```
 
-After the deployment you will see the API's URL, which represents the url you can then use.
+After the deployment CDK will output the API Gateway URL endpoint to be used for testing.
 
-## The Component Structure
+## Architecture
 
-This Stack contains:
+![Architecture Diagram](architecture.png)
+
+
+This sample application provisions:
 
 #### Amazon API Gateway
 - Deploy an edge-optimized API endpoint
