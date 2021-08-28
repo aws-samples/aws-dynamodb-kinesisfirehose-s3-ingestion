@@ -12,6 +12,9 @@
 
 ---
 <!--END STABILITY BANNER-->
+| **Language**     | **Package**        |
+|:-------------|-----------------|
+|![Typescript Logo](https://docs.aws.amazon.com/cdk/api/latest/img/typescript32.png) Typescript|[aws-dynamodb-kinesisstreams-s3](https://www.npmjs.com/package/aws-dynamodb-kinesisstreams-s3)|
 
 This a sample AWS CDK Construct (L3) that delivers Amazon DynamoDB records to an S3 bucket using Amazon Kinesis Data Streams and Kinesis Data Firehose.
 
