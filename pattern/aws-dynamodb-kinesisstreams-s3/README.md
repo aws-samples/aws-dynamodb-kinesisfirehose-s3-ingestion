@@ -33,32 +33,32 @@ npm run build
 This construct provisions by default:
 
 #### Amazon DynamoDB Table
-- Set the billing mode for DynamoDB Table to On-Demand (Pay per request)
-- Enable server-side encryption for DynamoDB Table using AWS managed KMS Key
-- Creates a partition key called 'id' for DynamoDB Table
-- Retain the Table when deleting the CloudFormation stack
-- Enable continuous backups and point-in-time recovery
+- Sets the billing mode to On-Demand (Pay per request)
+- Enables server-side encryption using AWS-managed KMS Key
+- Creates a partition key called 'id'
+- Enables continuous backups and point-in-time recovery
+- Retains the Table when deleting the CloudFormation stack
 
-#### Amazon Kinesis Stream
-- Configure least privilege access IAM role for Amazon Kinesis Stream
-- Enable server-side encryption for Amazon Kinesis Stream using AWS Managed KMS Key
-- Deploy best practices CloudWatch Alarms for the Amazon Kinesis Stream
+#### Amazon Kinesis Data Stream
+- Configures least privilege access IAM role
+- Enables server-side encryption using AWS-managed KMS Key
+- Deploys best practices CloudWatch Alarms
 
-#### Amazon Kinesis Firehose
-- Enable CloudWatch logging for Amazon Kinesis Firehose
-- Configure least privilege access IAM role for Amazon Kinesis Firehose
+#### Amazon Kinesis Data Firehose
+- Configures least privilege access IAM role
+- Enables CloudWatch logging
 
 #### Amazon S3 Bucket
-- Configure Access logging for Amazon S3 Bucket
-- Enable server-side encryption for Amazon S3 Bucket using AWS managed KMS Key
-- Enforce encryption of data in transit
-- Turn on the versioning for Amazon S3 Bucket
-- Don't allow public access for Amazon S3 Bucket
-- Retain the Amazon S3 Bucket when deleting the CloudFormation stack
+- Configures Access logging
+- Enables server-side encryption using AWS-managed KMS Key
+- Enforces encryption of data in transit
+- Enables versioning
+- Blocks Public Access
+- Retains the Amazon S3 Bucket when deleting the CloudFormation stack
 - Applies Lifecycle rule to move non-current object versions to Glacier storage after 90 days
 
 #### AWS Lambda Function
-- Configure limited privilege access IAM role for AWS Lambda function
-- Enable X-Ray Tracing
-- Set Environment Variables
+- Configures limited privilege access IAM role for the AWS Lambda function
+- Enables X-Ray Tracing
+- Sets Environment Variables
 - AWS_NODEJS_CONNECTION_REUSE_ENABLED (for Node 12.x and higher functions)
