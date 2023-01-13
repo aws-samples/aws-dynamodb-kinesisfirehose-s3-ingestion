@@ -1,15 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import {expect as expectCDK, haveResource, ResourcePart} from '@aws-cdk/assert';
-import {AwsDynamoDBKinesisStreamsS3} from '../lib';
-import * as cdk from '@aws-cdk/core';
-import * as dynamodb from '@aws-cdk/aws-dynamodb'
+import { expect as expectCDK, haveResource, ResourcePart } from '@aws-cdk/assert';
+import { Stack } from 'aws-cdk-lib';
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import { AwsDynamoDBKinesisStreamsS3 } from '../lib';
 
 const modelName = 'SourceData';
 
 describe('AwsDynamoDBKinesisStreamsS3', () => {
-  const stack = new cdk.Stack();
+  const stack = new Stack();
 
   test('Default parameters creates a table with kinesis stream', () => {
     new AwsDynamoDBKinesisStreamsS3(stack, 'AwsDynamodbKinesisfirehoseS3Test', {

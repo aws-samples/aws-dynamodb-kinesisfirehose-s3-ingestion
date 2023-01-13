@@ -1,12 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import * as dynamodb from '@aws-cdk/aws-dynamodb'
-import { Construct } from '@aws-cdk/core'
 import { KinesisStreamsToKinesisFirehoseToS3, KinesisStreamsToKinesisFirehoseToS3Props } from '@aws-solutions-constructs/aws-kinesisstreams-kinesisfirehose-s3'
 import * as defaults from '@aws-solutions-constructs/core'
-import * as lambda from '@aws-cdk/aws-lambda'
-import * as s3 from '@aws-cdk/aws-s3'
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb'
+import * as lambda from 'aws-cdk-lib/aws-lambda'
+import * as s3 from 'aws-cdk-lib/aws-s3'
+import { Construct } from 'constructs'
 import * as deepmerge from 'deepmerge'
 import { isPlainObject } from './utils'
 
@@ -73,7 +73,7 @@ export class AwsDynamoDBKinesisStreamsS3 extends Construct {
 
   /**
    * @summary Constructs a new instance of the AwsDynamodbKinesisStreamsS3 class.
-   * @param {cdk.Construct} scope - represents the scope for all the resources.
+   * @param {Construct} scope - represents the scope for all the resources.
    * @param {string} id - this is a a scope-unique id.
    * @param {AwsDynamoDBKinesisStreamsS3} props - user provided props for the construct.
    */
@@ -123,13 +123,13 @@ export class AwsDynamoDBKinesisStreamsS3 extends Construct {
       this.transformationLambda.grantInvoke(this.kinesisStreamsToKinesisFirehoseToS3.kinesisFirehoseRole)
     }
 
-    let dynamoTableProps: dynamodb.TableProps = {
+    let _dynamoTableProps: dynamodb.TableProps = {
       kinesisStream: this.kinesisStreamsToKinesisFirehoseToS3.kinesisStream,
       ...defaultTableProps
     }
 
     if (props.dynamoTableProps) {
-      dynamoTableProps = deepmerge(dynamoTableProps, props.dynamoTableProps,
+      _dynamoTableProps = deepmerge(_dynamoTableProps, props.dynamoTableProps,
         {
           arrayMerge: (target: any[], source: any[]) => {
             target = source
@@ -141,7 +141,7 @@ export class AwsDynamoDBKinesisStreamsS3 extends Construct {
 
     // Setup the DynamoDB table
     this.dynamoTable = defaults.buildDynamoDBTable(this, {
-      dynamoTableProps
-    })
+      dynamoTableProps: _dynamoTableProps,
+    })[1] as dynamodb.Table;
   }
 }
