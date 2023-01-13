@@ -1,6 +1,6 @@
 {
   "name": "aws-dynamodb-kinesisfirehose-s3-ingestion-sample-application",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CDK application for sending Amazon DynamoDB Streams to an S3 bucket using Amazon Kinesis Data Streams and Data Firehose.",
   "private": true,
   "bin": {
@@ -20,31 +20,27 @@
   },
   "license": "MIT-0",
   "devDependencies": {
-    "@aws-cdk/assert": "1.110.1",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
-    "aws-cdk": "^1.135.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.1",
-    "eslint-plugin-jest": "^24.4.0",
+    "@aws-cdk/assert": "^2.60.0",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.15",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "aws-cdk": "^2.60.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.3.2",
-    "ts-jest": "^26.5.6",
-    "ts-node": "10.0.0",
-    "typescript": "^4.3.5"
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.3.1",
+    "prettier": "2.8.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.9.4"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "1.110.1",
-    "@aws-cdk/aws-dynamodb": "1.110.1",
-    "@aws-cdk/core": "1.110.1",
-    "@aws-solutions-constructs/aws-apigateway-dynamodb": "1.110.1",
-    "@aws-solutions-constructs/core": "1.110.1",
-    "aws-dynamodb-kinesisstreams-s3": "1.0.1",
-    "source-map-support": "^0.5.16"
+    "@aws-solutions-constructs/aws-apigateway-dynamodb": "^2.30.0",
+    "aws-cdk-lib": "^2.60.0",
+    "aws-dynamodb-kinesisstreams-s3": "file:../pattern/aws-dynamodb-kinesisstreams-s3",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
   }
 }

@@ -1,20 +1,20 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import * as dynamodb from '@aws-cdk/aws-dynamodb'
-import * as cdk from '@aws-cdk/core'
-import { Duration } from '@aws-cdk/core'
-import * as lambda from '@aws-cdk/aws-lambda'
-import * as apigateway from '@aws-cdk/aws-apigateway'
-import * as path from 'path'
 import { ApiGatewayToDynamoDB } from '@aws-solutions-constructs/aws-apigateway-dynamodb'
-import { AwsDynamoDBKinesisStreamsS3 } from 'aws-dynamodb-kinesisstreams-s3/lib'
+import { Duration, Stack, StackProps } from 'aws-cdk-lib'
+import * as apigateway from 'aws-cdk-lib/aws-apigateway'
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb'
+import * as lambda from 'aws-cdk-lib/aws-lambda'
+import { Construct } from 'constructs'
+import * as path from 'path'
+import { AwsDynamoDBKinesisStreamsS3 } from '../../pattern/aws-dynamodb-kinesisstreams-s3/lib'
 
-export class AwsServerlessDynamoDbS3IngestionStack extends cdk.Stack {
+export class AwsServerlessDynamoDbS3IngestionStack extends Stack {
   public readonly dynamodbKinesisS3: AwsDynamoDBKinesisStreamsS3;
   public readonly apiGatewayToDynamoDB: ApiGatewayToDynamoDB;
 
-  constructor (scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor (scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
     const modelName = 'SourceData'
 
@@ -23,7 +23,7 @@ export class AwsServerlessDynamoDbS3IngestionStack extends cdk.Stack {
       applyTransformation: true,
       transformationFunctionProps: {
         code: lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda')),
-        runtime: lambda.Runtime.NODEJS_12_X,
+        runtime: lambda.Runtime.NODEJS_14_X,
         handler: 'index.handler',
         timeout: Duration.minutes(15)
       },
