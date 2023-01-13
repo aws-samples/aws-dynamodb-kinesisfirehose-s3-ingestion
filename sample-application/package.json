@@ -39,7 +39,7 @@
   "dependencies": {
     "@aws-solutions-constructs/aws-apigateway-dynamodb": "^2.30.0",
     "aws-cdk-lib": "^2.60.0",
-    "aws-dynamodb-kinesisstreams-s3": "file:../pattern/aws-dynamodb-kinesisstreams-s3",
+    "aws-dynamodb-kinesisstreams-s3": "^2.0.1",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
   }
