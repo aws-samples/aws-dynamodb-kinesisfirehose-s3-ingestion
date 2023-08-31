@@ -78,7 +78,7 @@ export class AwsDynamoDBKinesisStreamsS3 extends Construct {
    * @param {AwsDynamoDBKinesisStreamsS3} props - user provided props for the construct.
    */
 
-  constructor (scope: Construct, id: string, props: AwsDynamoDBKinesisStreamsS3Props) {
+  constructor(scope: Construct, id: string, props: AwsDynamoDBKinesisStreamsS3Props) {
     super(scope, id)
     let firehoseProps: KinesisStreamsToKinesisFirehoseToS3Props = {}
 
@@ -142,6 +142,6 @@ export class AwsDynamoDBKinesisStreamsS3 extends Construct {
     // Setup the DynamoDB table
     this.dynamoTable = defaults.buildDynamoDBTable(this, {
       dynamoTableProps: _dynamoTableProps,
-    })[1] as dynamodb.Table;
+    }).tableObject as dynamodb.Table;
   }
 }
