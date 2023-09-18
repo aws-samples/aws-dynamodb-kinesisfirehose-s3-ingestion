@@ -48,6 +48,20 @@ cd sample-application
 cdk deploy
 ```
 
+## Test
+
+Sample app creates a Rest API `SourceData Service` with a `post` method. Send a test event:
+
+```bash
+- Sample event body : 
+
+{"data": '{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"}'}
+
+- Sample event body : 
+
+{"data": '[{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"},{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"},{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"},{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"},{\"CardID\":\"defaultname\",\"Image\":\"defaulturl\"}]'}
+```
+
 After the deployment CDK will output the API Gateway URL endpoint to be used for testing.
 
 ## Architecture
