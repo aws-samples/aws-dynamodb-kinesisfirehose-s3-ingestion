@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-const AWS = require("aws-sdk");
+import { unmarshall } from "@aws-sdk/util-dynamodb";
 
 /**
  *
@@ -12,11 +12,11 @@ export const handler = async (
 ): Promise<any> => {
     console.log('request:', JSON.stringify(event, undefined, 2));
     // Process the list of records and transform them
-    const output = event.records.map((record:any) => {
+    const output = event.records.map((record: any) => {
         const decodedRecord = JSON.parse((Buffer.from(record.data, 'base64').toString()));
-        const payload = AWS.DynamoDB.Converter.unmarshall(decodedRecord.dynamodb.NewImage);
+        const payload = unmarshall(decodedRecord.dynamodb.NewImage);
         console.log('output payload: ', payload);
-         // Generating output result and encoding the payload
+        // Generating output result and encoding the payload
         return {
             recordId: record.recordId,
             result: 'Ok',
