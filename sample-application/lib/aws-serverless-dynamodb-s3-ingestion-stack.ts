@@ -23,7 +23,7 @@ export class AwsServerlessDynamoDbS3IngestionStack extends Stack {
       applyTransformation: true,
       transformationFunctionProps: {
         code: lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda')),
-        runtime: lambda.Runtime.NODEJS_14_X,
+        runtime: lambda.Runtime.NODEJS_18_X,
         handler: 'index.handler',
         timeout: Duration.minutes(15)
       },

@@ -38,6 +38,7 @@
     "typescript": "~5.2.2"
   },
   "dependencies": {
+    "@aws-sdk/util-dynamodb": "^3.415.0",
     "@aws-solutions-constructs/aws-apigateway-dynamodb": "^2.41.0",
     "aws-cdk-lib": "^2.90.0",
     "aws-dynamodb-kinesisstreams-s3-v2": "2.0.1",
