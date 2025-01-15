@@ -23,9 +23,9 @@ export class AwsServerlessDynamoDbS3IngestionStack extends Stack {
       applyTransformation: true,
       transformationFunctionProps: {
         code: lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda')),
-        runtime: lambda.Runtime.NODEJS_18_X,
+        runtime: lambda.Runtime.NODEJS_22_X,
         handler: 'index.handler',
-        timeout: Duration.minutes(15)
+        timeout: Duration.minutes(1)
       },
       dynamoTableProps: {
         partitionKey: {
