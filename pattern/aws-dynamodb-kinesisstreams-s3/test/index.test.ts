@@ -143,8 +143,12 @@ describe('AwsDynamoDBKinesisStreamsS3', () => {
     const json = JSON.stringify(template.toJSON());
     expect(json).not.toContain('log-group:/aws/lambda/*');
 
+    // Exact match on the trust policy's service principal (not a substring search)
+    const trustsService = (role: any, service: string): boolean =>
+      (role.Properties.AssumeRolePolicyDocument.Statement as any[]).some((s) =>
+        ([] as unknown[]).concat(s.Principal?.Service ?? []).some((p) => p === service));
     const lambdaRoles = Object.entries(template.findResources('AWS::IAM::Role'))
-      .filter(([, r]) => JSON.stringify(r.Properties.AssumeRolePolicyDocument).includes('lambda.amazonaws.com'));
+      .filter(([, r]) => trustsService(r, 'lambda.amazonaws.com'));
     expect(lambdaRoles).toHaveLength(1);
     expect(lambdaRoles[0][1].Properties.Policies).toBeUndefined();
 
