@@ -10,17 +10,18 @@ import { unmarshall } from "@aws-sdk/util-dynamodb";
 export const handler = async (
     event: any
 ): Promise<any> => {
-    console.log('request:', JSON.stringify(event, undefined, 2));
+    // Record payloads are not logged to avoid writing table data to CloudWatch Logs
+    console.log(`Received ${event.records.length} record(s).`);
     // Process the list of records and transform them
     const output = event.records.map((record: any) => {
         const decodedRecord = JSON.parse((Buffer.from(record.data, 'base64').toString()));
         const payload = unmarshall(decodedRecord.dynamodb.NewImage);
-        console.log('output payload: ', payload);
-        // Generating output result and encoding the payload
+        // Generating output result and encoding the payload.
+        // Newline-delimited so Athena / AWS Glue can read the delivered objects as JSON Lines.
         return {
             recordId: record.recordId,
             result: 'Ok',
-            data: (Buffer.from(JSON.stringify(payload))).toString('base64'),
+            data: (Buffer.from(JSON.stringify(payload) + '\n')).toString('base64'),
         };
     });
     console.log(`Processing completed.  Successful record(s) ${output.length}.`);
